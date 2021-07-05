@@ -1,0 +1,33 @@
+
+// 1. Задать массив фруктов (поля: имя, цвет, вес). Используя javascript (createElement и appendChild), 
+// добавить в html тег div для каждого объекта фрукта. Текст внутри тега - "имя, цвет, вес" ("банан, желтый, 2").
+
+const fruits = [{ name: 'banana', color: 'yellow', weight: 1 },
+{ name: 'orange', color: 'orange', weight: 0.5 },
+{ name: 'watermelon', color: 'green', weight: 10 }];
+let body = document.body
+for (fruit of fruits) {
+  let div = document.createElement('div');
+  div.textContent = `${fruit.name}, ${fruit.color}, ${fruit.weight}`
+  document.body.appendChild(div)
+}
+
+// 2. На странице в html задать список ul элементов li с любыми числами.Джававскриптом нужно выбрать из этого списка четные числа и создать из них массив.
+// Затем создать из массива новый список ul элементов li и поместить эти элементы после исходного тега ul.
+
+const numbers = [];
+let elements = document.querySelectorAll('li');
+for (let i = 0; i <= elements.length; i++) {
+  if (i % 2 === 1) {
+    numbers.push(elements[i].innerText);
+  }
+}
+console.log(numbers);
+
+let ul = document.querySelector('ul');
+numbers.forEach(function (number) {
+  let li = document.createElement('li');
+  li.textContent = number;
+  ul.appendChild(li);
+  body.appendChild(ul);
+})
